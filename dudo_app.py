@@ -21,8 +21,8 @@ from scipy.special import comb
 def proba(dados_incognita: int, dados_almenos: int) -> float:
     rta = 0
     for dado in range(dados_almenos, dados_incognita + 1):
-        if dado == 0:
-            continue
+        #if dado == 0:
+            #continue
         x = comb(dados_incognita, dado)
         y = (1 / 3) ** dado
         z = (1 - (1 / 3)) ** (dados_incognita - dado)
