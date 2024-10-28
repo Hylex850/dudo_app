@@ -12,10 +12,6 @@ import streamlit as st
 import math
 from scipy.special import comb
 
-
-
-
-
 # Functions from your original script
 
 def proba(dados_incognita: int, dados_almenos: int) -> float:
@@ -55,8 +51,6 @@ def jugada_optima(dados_incognitos: int, jugada: int) -> dict:
         "SEGUIRLA": valor_esperado_seguirla,
         "CALZAR": valor_esperado_calzar
     }
-    
-    
 
     return rta
 
@@ -97,21 +91,23 @@ if st.button("Calcular"):
     st.write(f"**Valor esperado de Seguirla** (decir {jugada_recibida + 1} de algo): {rta2['SEGUIRLA']}")
     st.write(f"**Valor esperado de Calzar**: {rta['CALZAR']}")
 
+    # Determinar la estrategia recomendada
+    estrategias_maximas = []
     maximo = max(all_actions.values())
-    estrategias_maximas = [key for key, value in all_actions.items() if value == maximo]
-    estrategia = estrategias_maximas[0]
-    
-    
-    
+
+    for accion, valor in all_actions.items():
+        if valor == maximo:
+            estrategias_maximas.append(accion)
+
+    # Manejar el caso especial donde DUDAR y SEGUIRLA tienen el mismo valor esperado
+    if "DUDAR" in estrategias_maximas and "SEGUIRLA" in estrategias_maximas:
+        # Preferir SEGUIRLA si están empatadas y son mejores que CALZAR
+        estrategia = "SEGUIRLA"
+    else:
+        # Seleccionar la primera estrategia con el valor máximo
+        estrategia = estrategias_maximas[0]
+
     st.success(f"Estrategia recomendada: **{estrategia}**")
-    
-    if rta['DUDAR'] == rta2['SEGUIRLA']:
-        if rta['DUDAR'] < rta['CALZAR']:
-            
-
-            st.success("Estrategia recomendada: **SEGUIRLA**")
-
-
 
 
 
