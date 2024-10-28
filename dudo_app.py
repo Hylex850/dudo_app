@@ -104,7 +104,7 @@ if st.button("Calcular"):
     
     
     
-    if (rta['DUDAR'] == rta2['SEGUIRLA'])and rta['SEGUIRLA'] < rta['CALZAR']:
+    if (rta['DUDAR'] == rta2['SEGUIRLA']) and rta['SEGUIRLA'] > rta['CALZAR']:
 
         st.success("Estrategia recomendada: **SEGUIRLA**")
 
