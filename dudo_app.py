@@ -55,6 +55,8 @@ def jugada_optima(dados_incognitos: int, jugada: int) -> dict:
         "SEGUIRLA": valor_esperado_seguirla,
         "CALZAR": valor_esperado_calzar
     }
+    
+    
 
     return rta
 
@@ -98,5 +100,21 @@ if st.button("Calcular"):
     maximo = max(all_actions.values())
     estrategias_maximas = [key for key, value in all_actions.items() if value == maximo]
     estrategia = estrategias_maximas[0]
-
+    
+    
+    
     st.success(f"Estrategia recomendada: **{estrategia}**")
+    
+    if rta['DUDAR'] == rta2['SEGUIRLA']:
+        if rta['DUDAR'] < rta['CALZAR']:
+            
+
+            st.success("Estrategia recomendada: **SEGUIRLA**")
+
+
+
+
+
+
+
+
