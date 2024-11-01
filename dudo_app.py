@@ -95,17 +95,18 @@ st.write("Este programa calcula la respuesta óptima en el juego Dudo basado en 
 
 # User Inputs
 st.header("Ingrese los datos de la partida:")
+# Seleccionar el tipo de juego
+tipo_juego = st.radio(
+    "Seleccione el tipo de juego:",
+    ('Normal (Probabilidad 1/3)', 'Con Aces (Probabilidad 1/6)')
+)
 dados_totales = st.number_input("Cantidad de dados totales en juego:", min_value=1, step=1)
 dados_en_mano = st.number_input("Cantidad de dados que tienes en tu vaso:", min_value=0, step=1, max_value=int(dados_totales))
 jugada_recibida = st.number_input("Jugada recibida en dados:", min_value=1, step=1)
 dados_en_mano_totales = st.number_input("Cantidad de dados en tu vaso que coinciden con la jugada recibida:", min_value=0, step=1, max_value=int(dados_en_mano))
 
 
-# Seleccionar el tipo de juego
-tipo_juego = st.radio(
-    "Seleccione el tipo de juego:",
-    ('Normal (Probabilidad 1/3)', 'Con Aces (Probabilidad 1/6)')
-)
+
 
 
 if st.button("Calcular"):
